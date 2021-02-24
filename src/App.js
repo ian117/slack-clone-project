@@ -41,7 +41,7 @@ const Container = styled.div`
 `
 
 const Main = styled.div`
-  background-color: gray;
+  background-color: white;
   display: grid;
   grid-template-columns: 260px auto;
 `

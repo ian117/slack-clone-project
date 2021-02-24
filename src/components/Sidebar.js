@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {sidebarItems} from '../data/SidebarData'
+import {ChannelItems} from '../data/ChannelData'
 import AddIcon from '@material-ui/icons/Add';
 
 function Sidebar() {
@@ -19,7 +20,7 @@ function Sidebar() {
                
                     {
                         sidebarItems.map((item) => (
-                           <MainChannelItem>
+                           <MainChannelItem key={item.text}>
                                 {item.icon}
                                 {item.text}
                             </MainChannelItem>
@@ -34,6 +35,14 @@ function Sidebar() {
                         </div>
                         <AddIcon></AddIcon>
                     </NewChannelContainer>
+                    <ChannelList>
+                        {ChannelItems.map((item) => (
+                                <Channel key={item.text}>
+                                {item.icon} {item.text}
+                                </Channel>
+                        )
+                            )}
+                    </ChannelList>
             </ChannelsContainer>
 
         </Container>
@@ -83,6 +92,10 @@ const NewMessage = styled.div`
     align-items: center;
     padding-left: 19px;
     cursor: pointer;
+
+    :hover {
+        background: #351D40;
+    }
  `
 
  const ChannelsContainer = styled.div`
@@ -96,4 +109,27 @@ const NewMessage = styled.div`
     align-items: center;
     height: 28px;
     padding-left: 19px;
+    padding-right: 12px;
+    padding-bottom: 5px;
+
+    :hover {
+        cursor: pointer;
+        color: white;
+    }
  `
+const ChannelList = styled.div`
+
+`
+
+const Channel = styled.div`
+    display: grid;
+    grid-template-columns: 15% auto;
+    height: 28px;
+    align-items: center;
+    padding-left: 19px;
+    cursor: pointer;
+
+    :hover {
+        background: #351D40;
+    }
+`
