@@ -3,11 +3,12 @@ import styled from "styled-components";
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import InfoIcon from '@material-ui/icons/Info';
 import ChatInput from './ChatInput';
+import ChatMessage from './ChatMessage';
 
 function Chat() {
     return (
         <Container>
-         <Header>
+          <Header>
             <Channel>
                 <ChannelName>
                     #MediaBer
@@ -18,22 +19,20 @@ function Chat() {
             </Channel>
 
             <ChannelDetails>
-                <div>
-                    Details
-                </div>
-                <Info/>
+                    <div>
+                        Details
+                    </div>
+                    <Info/>
 
-            </ChannelDetails>
+             </ChannelDetails>
            
-         </Header>
+          </Header>
 
-         <MessageContainer>  
+            <MessageContainer>  
+                <ChatMessage/>
+            </MessageContainer>
         
-         </MessageContainer>
-        
-        <ChatInput>
-
-        </ChatInput>
+            <ChatInput/>
         
         </Container>
     )
@@ -44,6 +43,7 @@ export default Chat
 const Container = styled.div`
   display: grid;
   grid-template-rows: 65px auto min-content;
+  background-color: rgba(220,220,220, 1);
 `
 
 const Header = styled.div`
