@@ -25,5 +25,9 @@ export const ChannelItems = [
     {
         icon: <WeekendIcon/>,
         text: "Channel 6",
+    },
+    {
+        icon: <WeekendIcon/>,
+        text: "Channel 7",
     }
 ]

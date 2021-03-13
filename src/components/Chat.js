@@ -2,37 +2,39 @@ import React from 'react'
 import styled from "styled-components";
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import InfoIcon from '@material-ui/icons/Info';
+import ChatInput from './ChatInput';
 
 function Chat() {
     return (
         <Container>
-            <Header>
-                <InfoChannel>
-                    <ChannelHeading>
-                        <HeadingText>
-                            #MediaBer
-                        </HeadingText>
-                        <HeadingSymbol>
-                            <StarOutlineIcon/>
-                        </HeadingSymbol>
+         <Header>
+            <Channel>
+                <ChannelName>
+                    #MediaBer
+                </ChannelName>
+                <ChannelInfo>
+                    The best Agency in da world
+                </ChannelInfo>
+            </Channel>
 
-                    </ChannelHeading>
-                    <ChannelText>
-                    Company-Wide announcements and work based matters
-                    </ChannelText>
-                </InfoChannel>
-                <DetailsBox>
-                    <DetailsHeading>
-                        Details
-                    </DetailsHeading>
-                    <DetailsSymbol>
-                        <InfoIcon/>
-                    </DetailsSymbol>
-                </DetailsBox>
-            </Header>
-            <Main>
+            <ChannelDetails>
+                <div>
+                    Details
+                </div>
+                <Info/>
 
-            </Main>
+            </ChannelDetails>
+           
+         </Header>
+
+         <MessageContainer>  
+        
+         </MessageContainer>
+        
+        <ChatInput>
+
+        </ChatInput>
+        
         </Container>
     )
 }
@@ -41,58 +43,49 @@ export default Chat
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 80px auto;
+  grid-template-rows: 65px auto min-content;
 `
 
 const Header = styled.div`
-  background-color: rgb(230, 230,230);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 10px;
-  padding-left: 10px;
-`
-
-const Main = styled.div`
-
-`
-
-const InfoChannel = styled.div`
-
-`
-
-const ChannelHeading = styled.div`
-    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(83, 39, 83,.12)
 `
 
-const HeadingText = styled.div`
-
+const Channel = styled.div`
+    
+`
+const ChannelName = styled.div`
+    font-weight: 700;
 `
 
-const HeadingSymbol = styled.div`
-    padding-left: 5px;
+const ChannelInfo = styled.div`
+    font-weight: 400;
+    color: #606060;
+    font-size: 14px;
+    margin-top: 8px;
 `
 
-const ChannelText = styled.div`
-    font-size: 0.9rem;
-    font-weight: 380;
-    color: rgb(90, 90,90);
-`
-
-const DetailsBox = styled.div`
+const ChannelDetails = styled.div`
     display: flex;
-    cursor: pointer;
-    padding-right: 10px;
+    align-items: center;
+    
+    div {
+        color: #606060;
+    }
+
+    svg {
+        color: #404040;
+    }
 `
 
-const DetailsHeading = styled.div`
-    color: rgb(60, 60,60);
-    font-weight: 500;
+const Info = styled(InfoIcon)`
+    margin-left: 10px;
 `
 
-const DetailsSymbol = styled.div`
-    color: rgb(60, 60,60);
-    font-weight: 500;
-    padding-left: 5px;
+const MessageContainer = styled.div`
+
 `
