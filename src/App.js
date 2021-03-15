@@ -44,7 +44,7 @@ useEffect(() => {
 
               <Switch>
 
-                <Route path="/room/:channelID"><Chat/></Route>
+                <Route path="/room/:channelID"><Chat user={user}/></Route>
                 <Route path="/" exact>Select or Create Channel</Route>
               </Switch>
 
@@ -64,7 +64,7 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-rows: 40px auto;
+  grid-template-rows: 40px minmax(0, 1fr);
 `
 
 const Main = styled.div`
