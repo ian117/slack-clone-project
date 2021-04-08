@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components"
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Header({user, signOut}) {
     return (
@@ -19,9 +20,12 @@ function Header({user, signOut}) {
                 <Name>
                    {user.name}
                 </Name>
-                <UserImage onClick={signOut}>
+                <UserImage>
                     <img src={ user.photo? user.photo : "https://i.imgur.com/6VBx3io.png"}/>
                 </UserImage>
+                <OutDiv  onClick={signOut}>
+                    <ExitToAppIcon/>
+                </OutDiv>
             </UserContainer>
         </Container>
     )
@@ -88,9 +92,21 @@ const UserImage = styled.div`
     height: 28px;
     border: 2px solid white;
     border-radius: 3px;
-    cursor: pointer;
 
     img {
         width: 100%;
+    }
+`
+const OutDiv = styled.div`
+    width: 28px;
+    height: 28px;
+    /* border: 2px solid white; */
+    margin-left: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    svg {
+        width: 100%;
+        height: 100%;
     }
 `

@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import image from '../utils/slack_logo.png';
 import { auth, provider } from '../firebase';
 
+
+// https://image.shutterstock.com/image-vector/person-icon-flat-symbol-design-260nw-424612276.jpg
+
 function Login({setUser}) {
+
+    const [name, setName] = useState("");
 
     const signIn = () => {
         auth.signInWithPopup(provider)
@@ -18,12 +23,34 @@ function Login({setUser}) {
         .catch((err) => console.error(err.message))
     }
 
+
+    const signInNormal = () => {
+        if (name.length === 0) {
+            return
+        }
+        try {
+            const newUser = {
+                name: name,
+                photo: "https://image.shutterstock.com/image-vector/person-icon-flat-symbol-design-260nw-424612276.jpg",
+            }
+            localStorage.setItem('user', JSON.stringify(newUser))
+            setUser(newUser)
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
+
     return (
         <Container>
             <Content>
                 <SlackImage alt="slack" src={image}/>
                 <h2>Sign In Slack</h2>
+                <Okdiv>
+                <input placeholder="Name" value={name} onChange={e => setName(e.target.value)}></input>
+                <SignInButton onClick={() => signInNormal()}>Sign In</SignInButton>
                 <SignInButton onClick={() => signIn()}>Sign In With Google</SignInButton>
+                </Okdiv>
             </Content>
         </Container>
     )
@@ -72,5 +99,20 @@ const SignInButton = styled.button`
 
     :active {
         background-color: #2eb67d;
+    }
+`
+
+const Okdiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    input {
+        margin-top: 20px;
+        padding: 15px;
+        font-size: 1rem;
+        outline: none;
+        border-radius: 10px;
+        border: 1px solid black;
     }
 `
